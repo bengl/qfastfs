@@ -1,6 +1,6 @@
 {
   "name": "qfastfs",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "qdd's fast fs operations librarty",
   "main": "index.js",
   "scripts": {
