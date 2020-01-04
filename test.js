@@ -9,6 +9,8 @@ const pifall = require('pifall');
 const fs = pifall(require('fs'));
 const { execAsync: exec } = pifall(require('child_process'));
 const path = require('path');
+const fsBinding = process.binding('fs');
+const FSWrap = fsBinding.FSReqWrap || fsBinding.FSReqCallback;
 
 const {
   isdirAsync,
@@ -65,7 +67,7 @@ test`Wrap`(() => {
   const fn = () => {};
   const wrap = new Wrap(fn);
   eq(wrap.oncomplete, fn);
-  ok(wrap instanceof process.binding('fs').FSReqWrap);
+  ok(wrap instanceof FSWrap);
 });
 
 test`mkdirp`(async () => {
